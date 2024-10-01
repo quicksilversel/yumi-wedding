@@ -1,0 +1,1 @@
+export { encodeToShitJis } from './encodeToShiftJis'

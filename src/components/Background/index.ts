@@ -1,1 +1,2 @@
-export { Background } from './Background'
+export { BackgroundSp } from './BackgroundSp'
+export { BackgroundPc } from './BackgroundPc'

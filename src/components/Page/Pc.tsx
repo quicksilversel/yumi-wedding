@@ -24,5 +24,4 @@ const Container = styled.div`
   margin: 0 auto;
   overflow-x: hidden;
   box-sizing: content-box;
-  border-inline: 1px solid #000;
 `

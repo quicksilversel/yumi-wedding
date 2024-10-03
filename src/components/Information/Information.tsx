@@ -110,7 +110,7 @@ export const Information = () => {
 }
 
 const Container = styled.section`
-  padding: 60px 30px 0;
+  padding: 60px 20px 0;
   text-align: center;
 `
 
@@ -121,7 +121,7 @@ const Info = styled.div`
   font-size: 11px;
   line-height: 1;
   background: #fff;
-  padding: 20px 15px;
+  padding: 20px;
 `
 
 const InfoItem = styled.div`

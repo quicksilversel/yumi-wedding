@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Hero = () => {
-  return <Container></Container>
+  return <Container>hogehoge</Container>
 }
 
 const Container = styled.section`

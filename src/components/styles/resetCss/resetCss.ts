@@ -52,6 +52,8 @@ export const resetCss = css`
   h5,
   h6 {
     overflow-wrap: break-word;
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'メイリオ',
+      'Lucida Grande', Verdana, sans-serif;
   }
 
   a {

@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `
 
 const Container = styled.div`
-  width: 375px;
+  width: 400px;
   margin: 0 auto;
   overflow-x: hidden;
   box-sizing: content-box;

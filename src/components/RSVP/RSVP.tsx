@@ -80,6 +80,8 @@ const Container = styled.section`
 
 const Date = styled.div`
   font-size: 20px;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
 
   > span {
     font-size: 11px;

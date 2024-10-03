@@ -1,1 +1,0 @@
-export { encodeToShitJis } from './encodeToShiftJis'

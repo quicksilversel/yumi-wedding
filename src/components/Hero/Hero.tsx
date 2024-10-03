@@ -4,4 +4,6 @@ export const Hero = () => {
   return <Container></Container>
 }
 
-const Container = styled.section``
+const Container = styled.section`
+  height: 100svh;
+`

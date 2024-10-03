@@ -1,1 +1,0 @@
-export const DEFAULT_INPUT_WIDTH = 210

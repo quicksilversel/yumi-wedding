@@ -22,7 +22,7 @@ export const Intro = () => {
         scrollTrigger: {
           trigger: ref.current,
           start: 'top bottom',
-          toggleActions: 'restart none none reverse',
+          toggleActions: 'play complete none none',
         },
       })
       .fromTo(

@@ -120,7 +120,7 @@ const Info = styled.div`
   margin: 30px 20px 0;
   font-size: 11px;
   line-height: 1;
-  background: #fff;
+  background: #f8f8f8;
   padding: 20px;
 `
 

@@ -93,17 +93,17 @@ const Button = styled.a`
   margin: 20px auto 0;
   width: 275px;
   padding: 10px 0;
-  background: #000;
+  background: var(--accent-light-pink);
   color: #fff;
-  border: 1px solid #000;
+  border: 1px solid (--accent-light-pink);
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
   transition: background 0.3s;
 
   &:hover {
-    background: #fff;
+    background: var(--accent-green);
     color: #000;
-    border: 1px solid #fff;
+    border: 1px solid var(--accent-green);
   }
 `

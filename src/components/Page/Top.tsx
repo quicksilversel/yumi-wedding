@@ -1,28 +1,25 @@
-import { useLayoutEffect, useState } from 'react'
+import styled from '@emotion/styled'
 
 import { Pc } from './Pc'
 import { Sp } from './Sp'
 
-import { BackgroundPc, BackgroundSp } from '../Background'
 import { Hero } from '../Hero'
 
-const isAndroid = (ua: string): boolean => /android/.test(ua)
-const isIos = (ua: string): boolean => /i(phone|pod|pad)/.test(ua)
+type Props = {
+  isSp: boolean
+}
 
-const isSp = (ua: string): boolean => isAndroid(ua) || isIos(ua)
-
-export const Top = () => {
-  const [ua, setUa] = useState<string>()
-
-  useLayoutEffect(() => {
-    setUa(window.navigator.userAgent.toLowerCase())
-  }, [])
-
+export const Top = ({ isSp }: Props) => {
   return (
-    <>
-      {ua && isSp(ua) ? <BackgroundSp /> : <BackgroundPc />}
-      {ua && isSp(ua) && <Hero />}
-      {ua && isSp(ua) ? <Sp /> : <Pc />}
-    </>
+    <Container>
+      <Hero />
+      {isSp ? <Sp /> : <Pc />}
+    </Container>
   )
 }
+
+const Container = styled.div`
+  --accent-light-pink: rgb(211, 174, 198);
+  --accent-pink: rgb(204, 98, 129);
+  --accent-green: rgb(142, 192, 58);
+`

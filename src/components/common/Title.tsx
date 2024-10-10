@@ -5,4 +5,5 @@ export const Title = styled.h2`
   font-family: 'Playfair Display', serif;
   text-transform: uppercase;
   letter-spacing: 2px;
+  color: rgb(142, 192, 58);
 `

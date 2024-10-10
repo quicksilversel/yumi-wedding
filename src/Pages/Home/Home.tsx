@@ -3,11 +3,14 @@
 import { Top } from '@/components/Page/Top'
 import { GlobalStyles } from '@/components/styles/GlobalStyles'
 
-const HomePage = () => {
+type Props = {
+  isSp: boolean
+}
+const HomePage = (props: Props) => {
   return (
     <>
       <GlobalStyles />
-      <Top />
+      <Top isSp={props.isSp} />
     </>
   )
 }

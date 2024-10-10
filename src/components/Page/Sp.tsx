@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 
-import { Hero } from '../Hero'
 import { Information } from '../Information'
 import { Intro } from '../Intro'
 import { Message } from '../Message'
@@ -18,5 +17,5 @@ export const Sp = () => {
 }
 
 const Container = styled.main`
-  background-color: #f8f8f8;
+  background-color: #fff;
 `

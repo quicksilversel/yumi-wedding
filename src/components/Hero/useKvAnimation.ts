@@ -24,7 +24,7 @@ export const useKvAnimation = (
     const ctx = gsap.context(() => {
       gsap.fromTo(
         backgroundRef.current,
-        { opacity: 0.45 },
+        { opacity: 1 },
         {
           opacity: 0,
           scrollTrigger: {

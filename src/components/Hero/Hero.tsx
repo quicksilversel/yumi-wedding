@@ -93,21 +93,8 @@ const Background = styled.div<{ isAnimating: boolean }>`
   top: 0;
   width: 100vw;
   height: 100lvh;
-  z-index: ${({ isAnimating }) => (isAnimating ? 10 : -1)};
   transition: opacity 0.3s;
   background-color: var(--accent-light-pink);
-
-  &::before {
-    position: absolute;
-    z-index: 10;
-    width: 100vw;
-    height: 100lvh;
-    pointer-events: none;
-    content: '';
-    background-color: var(--accent-green);
-    opacity: ${({ isAnimating }) => (isAnimating ? 1 : 0)};
-    transition: opacity 0.7s ease-in 0.8s;
-  }
 `
 
 const Wrap = styled.div`
@@ -128,15 +115,10 @@ const ScrollArea = styled.div`
 
 const StyledLogo = styled(Logo)<{ isAnimating: boolean }>`
   width: 300px;
-  fill: ${({ isAnimating }) => (!isAnimating ? '#fff' : '#fff')};
+  fill: #fff;
   transition: fill 0.7s ease-in 0.8s;
   z-index: 10;
-
-  ${({ isAnimating }) =>
-    isAnimating &&
-    css`
-      animation: ${svgAnimation} 2s ease-in-out forwards;
-    `}
+  animation: ${svgAnimation} 1.25s 0.2s linear both;
 `
 
 const Scroll = styled.div`

@@ -4,10 +4,15 @@ import { keyframes } from '@emotion/react'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import { Greetings } from './Greetings'
 import { Logo } from './Logo'
+import { useKvAnimation } from './useKvAnimation'
 
 export const Hero = () => {
-  const ref = useRef<HTMLDivElement>(null)
+  const scrollAreaRef = useRef<HTMLDivElement>(null)
+  const backgroundRef = useRef<HTMLDivElement>(null)
+  const contentsAreaRef = useRef<HTMLDivElement>(null)
+  const leadRef = useRef<HTMLDivElement>(null)
 
   const [isAnimating, setIsAnimating] = useState(true)
 
@@ -19,12 +24,22 @@ export const Hero = () => {
     return () => clearTimeout(timer)
   })
 
+  useKvAnimation(scrollAreaRef, backgroundRef, contentsAreaRef, leadRef)
+
   return (
-    <Container ref={ref} isAnimating={isAnimating}>
-      <StyledLogo isAnimating={isAnimating} />
-      <Scroll>
-        <span>Scroll</span>
-      </Scroll>
+    <Container>
+      <ScrollArea ref={scrollAreaRef}>
+        <Background ref={backgroundRef} isAnimating={isAnimating} />
+        <Wrap>
+          <ContentsArea ref={contentsAreaRef}>
+            <StyledLogo isAnimating={isAnimating} />
+            <Scroll>
+              <span>Scroll</span>
+            </Scroll>
+          </ContentsArea>
+          <Greetings ref={leadRef} />
+        </Wrap>
+      </ScrollArea>
     </Container>
   )
 }
@@ -60,10 +75,24 @@ const scrollLineAnimation = keyframes`
   }
 `
 
-const Container = styled.div<{ isAnimating: boolean }>`
+const Container = styled.section`
   position: relative;
+`
+
+const ContentsArea = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Background = styled.div<{ isAnimating: boolean }>`
+  position: absolute;
+  top: 0;
   width: 100vw;
-  height: 100svh;
+  height: 100lvh;
   z-index: ${({ isAnimating }) => (isAnimating ? 10 : -1)};
   transition: opacity 0.3s;
   background-color: var(--accent-light-pink);
@@ -72,7 +101,7 @@ const Container = styled.div<{ isAnimating: boolean }>`
     position: absolute;
     z-index: 10;
     width: 100vw;
-    height: 100svh;
+    height: 100lvh;
     pointer-events: none;
     content: '';
     background-color: var(--accent-green);
@@ -81,12 +110,24 @@ const Container = styled.div<{ isAnimating: boolean }>`
   }
 `
 
+const Wrap = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  margin-inline: auto;
+`
+
+const ScrollArea = styled.div`
+  position: relative;
+  width: 100%;
+  height: max(calc(100lvh - 50px), 587px);
+`
+
 const StyledLogo = styled(Logo)<{ isAnimating: boolean }>`
-  position: fixed;
-  inset: 0;
   width: 300px;
-  height: auto;
-  margin: auto;
   fill: ${({ isAnimating }) => (!isAnimating ? '#fff' : '#fff')};
   transition: fill 0.7s ease-in 0.8s;
   z-index: 10;
@@ -99,7 +140,7 @@ const StyledLogo = styled(Logo)<{ isAnimating: boolean }>`
 `
 
 const Scroll = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 50%;
   color: #fff;
@@ -110,14 +151,14 @@ const Scroll = styled.div`
   transition: 0.6s opacity ease-out;
 
   span {
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 40px;
   }
 
   &::after {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 50%;
     display: block;

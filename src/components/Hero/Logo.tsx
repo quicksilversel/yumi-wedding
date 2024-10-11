@@ -2,7 +2,9 @@ type Props = {
   className?: string
 }
 
-export const Logo = ({ className }: Props) => {
+import { forwardRef } from 'react'
+
+export const Logo = forwardRef<SVGSVGElement, Props>((props, ref) => {
   return (
     <svg
       id="_レイヤー_2"
@@ -10,7 +12,8 @@ export const Logo = ({ className }: Props) => {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       viewBox="0 0 599.6 392.5"
-      className={className}
+      className={props.className}
+      ref={ref}
     >
       <rect
         className="cls-1"
@@ -269,4 +272,6 @@ export const Logo = ({ className }: Props) => {
       />
     </svg>
   )
-}
+})
+
+Logo.displayName = 'Logo'

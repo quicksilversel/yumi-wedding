@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { forwardRef, useEffect, useRef } from 'react'
 
 import styled from '@emotion/styled'
 import gsap from 'gsap'
@@ -9,44 +9,13 @@ import { Title } from '../common/Title'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export const Intro = () => {
-  const ref = useRef<HTMLDivElement>(null)
+type Props = {}
+
+export const Greetings = forwardRef<HTMLDivElement, Props>((props, ref) => {
   const title = useRef<HTMLHeadingElement>(null)
   const ref1 = useRef<HTMLSpanElement>(null)
   const ref2 = useRef<HTMLSpanElement>(null)
   const ref3 = useRef<HTMLSpanElement>(null)
-
-  useEffect(() => {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top bottom',
-          toggleActions: 'play complete none none',
-        },
-      })
-      .fromTo(
-        title.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        ref1.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        ref2.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        ref3.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <Container ref={ref}>
@@ -96,11 +65,26 @@ export const Intro = () => {
       </Text>
     </Container>
   )
-}
+})
+
+Greetings.displayName = 'Greetings'
 
 const Container = styled.section`
-  padding: 60px 30px 0;
+  background-color: #fff;
+  color: #000;
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 
 const Right = styled.span`

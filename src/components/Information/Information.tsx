@@ -14,34 +14,6 @@ export const Information = () => {
   const title = useRef<HTMLDivElement>(null)
   const info = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top bottom',
-          toggleActions: 'play complete none none',
-        },
-      })
-      .fromTo(
-        title.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        title.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        info.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   return (
     <Container ref={ref}>
       <div ref={title}>

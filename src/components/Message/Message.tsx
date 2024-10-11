@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 
 import styled from '@emotion/styled'
 import gsap from 'gsap'
@@ -12,10 +12,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const Message = () => {
   const ref = useRef<HTMLDivElement>(null)
-  const title = useRef<HTMLDivElement>(null)
-  const text = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (!ref.current) return
     gsap
       .timeline({
         scrollTrigger: {
@@ -25,17 +24,7 @@ export const Message = () => {
         },
       })
       .fromTo(
-        title.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        title.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        text.current,
+        ref.current,
         { opacity: 0, filter: 'blur(30px)' },
         { opacity: 1, filter: 'blur(0px)', duration: 1 },
       )
@@ -45,11 +34,9 @@ export const Message = () => {
 
   return (
     <Container ref={ref}>
-      <div ref={title}>
-        <Title>Message</Title>
-        <SubTitle>To our esteemed friends</SubTitle>
-      </div>
-      <Text ref={text}>
+      <Title>Message</Title>
+      <SubTitle>To our esteemed friends</SubTitle>
+      <Text>
         当日挙式からご列席いただきたいと存じますので
         <br />
         挙式15分前迄におこしくださいますよう

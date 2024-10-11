@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef, useLayoutEffect } from 'react'
 
 import styled from '@emotion/styled'
 import gsap from 'gsap'
@@ -11,11 +11,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const RSVP = () => {
   const ref = useRef<HTMLDivElement>(null)
-  const title = useRef<HTMLDivElement>(null)
-  const text = useRef<HTMLDivElement>(null)
-  const button = useRef<HTMLAnchorElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (!ref.current) return
     gsap
       .timeline({
         scrollTrigger: {
@@ -25,22 +23,7 @@ export const RSVP = () => {
         },
       })
       .fromTo(
-        title.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        title.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        text.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-      .fromTo(
-        button.current,
+        ref.current,
         { opacity: 0, filter: 'blur(30px)' },
         { opacity: 1, filter: 'blur(0px)', duration: 1 },
       )
@@ -50,23 +33,18 @@ export const RSVP = () => {
 
   return (
     <Container ref={ref}>
-      <Title ref={title}>Response</Title>
-      <div ref={text}>
-        <Text>
-          お手数ですが 下記お日にち迄に
-          <br />
-          出欠情報のご連絡をお願い申し上げます
-        </Text>
-        <Date>
-          2024.12.13 <span>FRI</span>
-        </Date>
-        <Text>
-          期日までのご連絡が難しい場合には
-          <br />
-          ご一報いただけますと幸いです
-        </Text>
-      </div>
-      <Button href="" target="_blank" ref={button}>
+      <Title>Response</Title>
+      <Text>
+        お手数ですが 下記お日にち迄に
+        <br />
+        出欠情報のご連絡をお願い申し上げます
+        <Date>2024.12.13 FRI</Date>
+        <br />
+        期日までのご連絡が難しい場合には
+        <br />
+        ご一報いただけますと幸いです
+      </Text>
+      <Button href="" target="_blank">
         招待状に回答する
       </Button>
     </Container>
@@ -78,14 +56,13 @@ const Container = styled.section`
   text-align: center;
 `
 
-const Date = styled.div`
-  font-size: 20px;
-  font-family: 'Playfair Display', serif;
-  font-weight: bold;
-
-  > span {
-    font-size: 11px;
-  }
+const Date = styled.span`
+  display: inline-block;
+  color: #fff;
+  background-color: var(--accent-green);
+  margin: 5px 0;
+  padding: 5px 10px;
+  line-height: 1;
 `
 
 const Button = styled.a`

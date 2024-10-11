@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 
 import styled from '@emotion/styled'
 import gsap from 'gsap'
@@ -11,16 +11,31 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const Information = () => {
   const ref = useRef<HTMLDivElement>(null)
-  const title = useRef<HTMLDivElement>(null)
-  const info = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    if (!ref.current) return
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ref.current,
+          start: 'top bottom',
+          toggleActions: 'play complete none none',
+        },
+      })
+      .fromTo(
+        ref.current,
+        { opacity: 0, filter: 'blur(30px)' },
+        { opacity: 1, filter: 'blur(0px)', duration: 1 },
+      )
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Container ref={ref}>
-      <div ref={title}>
-        <Title>Information</Title>
-        <SubTitle>Details of our special day</SubTitle>
-      </div>
-      <Info ref={info}>
+      <Title>Information</Title>
+      <SubTitle>Details of our special day</SubTitle>
+      <Info>
         <InfoItem>
           <InfoHead>日時</InfoHead>
           <InfoBody>2025年1月13日（月）</InfoBody>

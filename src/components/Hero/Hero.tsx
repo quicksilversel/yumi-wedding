@@ -30,7 +30,7 @@ export const Hero = () => {
     <Container>
       <ScrollArea ref={scrollAreaRef}>
         <Background ref={backgroundRef} isAnimating={isAnimating} />
-        <Wrap>
+        <InnerContainer>
           <ContentsArea ref={contentsAreaRef}>
             <StyledLogo isAnimating={isAnimating} />
             <Scroll>
@@ -38,18 +38,26 @@ export const Hero = () => {
             </Scroll>
           </ContentsArea>
           <Greetings ref={leadRef} />
-        </Wrap>
+        </InnerContainer>
       </ScrollArea>
     </Container>
   )
 }
 
-export const svgAnimation = keyframes`
+const svgAnimation = keyframes`
   0% {
     clip-path: inset(0 0 100% 0);
   }
   100% {
     clip-path: inset(0);
+  }
+`
+const fadeInAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 `
 
@@ -97,7 +105,7 @@ const Background = styled.div<{ isAnimating: boolean }>`
   background-color: var(--accent-light-pink);
 `
 
-const Wrap = styled.div`
+const InnerContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -131,6 +139,7 @@ const Scroll = styled.div`
   text-transform: uppercase;
   transform: translateX(-50%);
   transition: 0.6s opacity ease-out;
+  animation: ${fadeInAnimation} 0.6s 1.5s ease-out both;
 
   span {
     position: absolute;

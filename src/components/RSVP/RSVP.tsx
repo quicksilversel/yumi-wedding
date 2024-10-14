@@ -38,6 +38,7 @@ export const RSVP = () => {
         お手数ですが 下記お日にち迄に
         <br />
         出欠情報のご連絡をお願い申し上げます
+        <br />
         <Date>2024.12.13 FRI</Date>
         <br />
         期日までのご連絡が難しい場合には
@@ -52,35 +53,33 @@ export const RSVP = () => {
 }
 
 const Container = styled.section`
-  padding: 60px 30px;
+  padding: 60px 40px;
   text-align: center;
 `
 
 const Date = styled.span`
   display: inline-block;
-  color: #fff;
-  background-color: var(--accent-green);
+  border-bottom: 2px solid var(--accent-light-pink);
   margin: 5px 0;
-  padding: 5px 10px;
+  padding: 5px 0;
   line-height: 1;
 `
 
 const Button = styled.a`
-  display: inline-block;
-  margin: 20px auto 0;
+  display: block;
   width: 275px;
+  margin: 20px auto 0;
   padding: 10px 0;
   background: var(--accent-light-pink);
-  color: #fff;
-  border: 1px solid (--accent-light-pink);
+  color: #000;
+  font-family: 'Lato', 'Zen Old Mincho', sans-serif;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: clamp(10px, 3.5vw, 3.5 * 390px / 100);
   transition: background 0.3s;
 
   &:hover {
-    background: var(--accent-green);
-    color: #000;
-    border: 1px solid var(--accent-green);
+    background: var(--accent-light-pink);
+    color: #fff;
+    border: 3px solid var(--accent-green);
   }
 `

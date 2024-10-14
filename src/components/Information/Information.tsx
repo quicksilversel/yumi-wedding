@@ -1,41 +1,29 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 import styled from '@emotion/styled'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
-import { SubTitle } from '../common/SubTitle'
+import { useSideScrollAnimation } from '@/hooks/useSideScrollAnimation'
+
 import { Title } from '../common/Title'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export const Information = () => {
   const ref = useRef<HTMLDivElement>(null)
+  const informationRef = useRef<HTMLDivElement>(null)
 
-  useLayoutEffect(() => {
-    if (!ref.current) return
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top bottom',
-          toggleActions: 'play complete none none',
-        },
-      })
-      .fromTo(
-        ref.current,
-        { opacity: 0, filter: 'blur(30px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 1 },
-      )
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  useSideScrollAnimation(ref, informationRef, '-450')
 
   return (
-    <Container ref={ref}>
-      <Title>Information</Title>
-      <SubTitle>Details of our special day</SubTitle>
-      <Info>
+    <Container>
+      <TitleContainer ref={ref}>
+        {Array.from({ length: 10 }).map((_, index) => (
+          <Title key={`${index}-index-anchor-title`}>Information</Title>
+        ))}
+      </TitleContainer>
+      <Info ref={informationRef}>
         <InfoItem>
           <InfoHead>日時</InfoHead>
           <InfoBody>2025年1月13日（月）</InfoBody>
@@ -96,6 +84,13 @@ export const Information = () => {
   )
 }
 
+const TitleContainer = styled.p`
+  display: inline-flex;
+  gap: 20px;
+  color: #fff;
+  white-space: nowrap;
+`
+
 const Container = styled.section`
   padding: 60px 20px 0;
   text-align: center;
@@ -107,8 +102,9 @@ const Info = styled.div`
   margin: 30px 20px 0;
   font-size: 11px;
   line-height: 1;
-  background: #f8f8f8;
-  padding: 20px;
+  background: var(--accent-green);
+  outline: 10px solid var(--accent-light-pink);
+  padding: 15px 20px;
 `
 
 const InfoItem = styled.div`

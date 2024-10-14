@@ -19,7 +19,8 @@ export const Top = ({ isSp }: Props) => {
 }
 
 const Container = styled.div`
-  --accent-light-pink: rgb(211, 174, 198);
-  --accent-pink: rgb(204, 98, 129);
-  --accent-green: rgb(142, 192, 58);
+  --accent-light-pink: #f5b2ac;
+  --accent-green: #caf5ab;
+
+  font-family: 'Lato', 'Zen Old Mincho', sans-serif;
 `

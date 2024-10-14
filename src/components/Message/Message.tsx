@@ -35,7 +35,6 @@ export const Message = () => {
   return (
     <Container ref={ref}>
       <Title>Message</Title>
-      <SubTitle>To our esteemed friends</SubTitle>
       <Text>
         当日挙式からご列席いただきたいと存じますので
         <br />
@@ -45,7 +44,9 @@ export const Message = () => {
         <br />
         迎賓館内には駐車場がございません
         <br />
-        緑地公園 又は近隣の有料駐車場をご利用いただきますよう何卒ご了承ください
+        緑地公園又は近隣の有料駐車場を
+        <br />
+        ご利用いただきますよう何卒ご了承ください
       </Text>
     </Container>
   )

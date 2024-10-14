@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useLayoutEffect, useState } from 'react'
 
 import { keyframes } from '@emotion/react'
 import { css } from '@emotion/react'
@@ -16,10 +16,10 @@ export const Hero = () => {
 
   const [isAnimating, setIsAnimating] = useState(true)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const timer = setTimeout(() => {
       setIsAnimating(false)
-    }, 1000)
+    }, 2000)
 
     return () => clearTimeout(timer)
   })
@@ -47,9 +47,13 @@ export const Hero = () => {
 const svgAnimation = keyframes`
   0% {
     clip-path: inset(0 0 100% 0);
+    opacity: 0;
+
   }
   100% {
     clip-path: inset(0);
+    opacity: 1;
+
   }
 `
 const fadeInAnimation = keyframes`
@@ -90,7 +94,7 @@ const Container = styled.section`
 const ContentsArea = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,9 +104,10 @@ const Background = styled.div<{ isAnimating: boolean }>`
   position: absolute;
   top: 0;
   width: 100vw;
-  height: 100lvh;
-  transition: opacity 0.3s;
-  background-color: var(--accent-light-pink);
+  height: 100dvh;
+  transition: background-color 0.7s ease-in;
+  background-color: ${({ isAnimating }) =>
+    !isAnimating ? 'var(--accent-light-pink)' : '#fff'};
 `
 
 const InnerContainer = styled.div`
@@ -111,22 +116,28 @@ const InnerContainer = styled.div`
   left: 0;
   right: 0;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   margin-inline: auto;
 `
 
 const ScrollArea = styled.div`
   position: relative;
   width: 100%;
-  height: max(calc(100lvh - 50px), 587px);
+  height: max(calc(100dvh - 50px), 587px);
 `
 
 const StyledLogo = styled(Logo)<{ isAnimating: boolean }>`
   width: 300px;
-  fill: #fff;
-  transition: fill 0.7s ease-in 0.8s;
+  fill: ${({ isAnimating }) =>
+    isAnimating ? 'var(--accent-light-pink)' : '#fff'};
+  transition: fill 0.7s ease-in;
   z-index: 10;
-  animation: ${svgAnimation} 1.25s 0.2s linear both;
+
+  ${({ isAnimating }) =>
+    isAnimating &&
+    css`
+      animation: ${svgAnimation} 1.25s 0.2s linear both;
+    `}
 `
 
 const Scroll = styled.div`

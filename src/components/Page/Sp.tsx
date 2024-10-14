@@ -16,4 +16,5 @@ export const Sp = () => {
 
 const Container = styled.main`
   background-color: #fff;
+  overflow-x: hidden;
 `

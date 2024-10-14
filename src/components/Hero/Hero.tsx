@@ -19,7 +19,7 @@ export const Hero = () => {
   useLayoutEffect(() => {
     const timer = setTimeout(() => {
       setIsAnimating(false)
-    }, 2000)
+    }, 1000)
 
     return () => clearTimeout(timer)
   })
@@ -132,12 +132,6 @@ const StyledLogo = styled(Logo)<{ isAnimating: boolean }>`
     isAnimating ? 'var(--accent-light-pink)' : '#fff'};
   transition: fill 0.7s ease-in;
   z-index: 10;
-
-  ${({ isAnimating }) =>
-    isAnimating &&
-    css`
-      animation: ${svgAnimation} 1.25s 0.2s linear both;
-    `}
 `
 
 const Scroll = styled.div`

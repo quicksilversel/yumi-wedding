@@ -18,7 +18,7 @@ export const Top = ({ isSp }: Props) => {
   )
 }
 
-const Container = styled.div`
+const Container = styled.main`
   --accent-light-pink: #f5b2ac;
   --accent-green: #caf5ab;
 

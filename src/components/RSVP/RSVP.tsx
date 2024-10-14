@@ -53,7 +53,7 @@ export const RSVP = () => {
 }
 
 const Container = styled.section`
-  padding: 60px 40px;
+  padding: 100px 40px;
   text-align: center;
 `
 

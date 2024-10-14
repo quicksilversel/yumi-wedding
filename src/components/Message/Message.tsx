@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
-import { SubTitle } from '../common/SubTitle'
 import { Text } from '../common/Text'
 import { Title } from '../common/Title'
 
@@ -53,6 +52,6 @@ export const Message = () => {
 }
 
 const Container = styled.section`
-  padding: 60px 30px 0;
+  padding: 110px 30px 0;
   text-align: center;
 `

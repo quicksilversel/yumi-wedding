@@ -1,6 +1,7 @@
 import type { RefObject } from 'react'
 import { useState, useEffect, useRef, useCallback } from 'react'
 
+const isSsr = () => typeof window === 'undefined'
 type Context = {
   isIntersecting: IntersectionObserverEntry['isIntersecting'] | undefined
   boundingClientRect:
@@ -31,7 +32,7 @@ export const useIntersection = (
   }, [])
 
   const interSectionObserver = useRef(
-    'IntersectionObserver' in window
+    !isSsr() && 'IntersectionObserver' in window
       ? new IntersectionObserver(([entry]: IntersectionObserverEntry[]) => {
           if (!entry) {
             return

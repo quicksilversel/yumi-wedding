@@ -18,7 +18,7 @@ export const Hero = () => {
   useLayoutEffect(() => {
     const timer = setTimeout(() => {
       setIsAnimating(false)
-    }, 7000)
+    }, 6500)
 
     return () => clearTimeout(timer)
   })

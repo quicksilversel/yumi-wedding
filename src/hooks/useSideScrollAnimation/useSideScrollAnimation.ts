@@ -7,33 +7,29 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export const useSideScrollAnimation = (
-  title: RefObject<HTMLDivElement>,
-  content: RefObject<HTMLDivElement>,
+  target: RefObject<HTMLDivElement>,
   movement: string,
 ) => {
   useLayoutEffect(() => {
-    if (!title.current || !content.current) return
+    if (!target.current) return
 
     const ctx = gsap.context(() => {
-      gsap
-        .timeline()
-        .to(title.current, {
-          x: movement,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: title.current,
-            start: 'bottom bottom-=25%',
-            end: `bottom top+=0`,
-            scrub: 1.0,
-          },
-        })
-        .fromTo(
-          content.current,
-          { opacity: 0, filter: 'blur(30px)' },
-          { opacity: 1, filter: 'blur(0px)', duration: 1 },
-        )
+      ScrollTrigger.config({
+        autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
+      })
+
+      gsap.to(target.current, {
+        x: movement,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: target.current,
+          start: 'bottom bottom-=25%',
+          end: `bottom top+=0`,
+          scrub: 1.0,
+        },
+      })
     })
 
     return () => ctx.revert()
-  }, [title, movement, content])
+  }, [target, movement])
 }

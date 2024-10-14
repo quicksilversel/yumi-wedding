@@ -14,7 +14,7 @@ export const Information = () => {
   const ref = useRef<HTMLDivElement>(null)
   const informationRef = useRef<HTMLDivElement>(null)
 
-  useSideScrollAnimation(ref, informationRef, '-450')
+  useSideScrollAnimation(ref, '-450')
 
   return (
     <Container>

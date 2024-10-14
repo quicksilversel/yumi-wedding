@@ -1,34 +1,27 @@
-import { forwardRef, useEffect, useRef } from 'react'
+import { forwardRef, useRef } from 'react'
 
 import styled from '@emotion/styled'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
 
 import { Text } from '../common/Text'
 import { Title } from '../common/Title'
-
-gsap.registerPlugin(ScrollTrigger)
 
 type Props = {}
 
 export const Greetings = forwardRef<HTMLDivElement, Props>((props, ref) => {
   const title = useRef<HTMLHeadingElement>(null)
-  const ref1 = useRef<HTMLSpanElement>(null)
-  const ref2 = useRef<HTMLSpanElement>(null)
-  const ref3 = useRef<HTMLSpanElement>(null)
 
   return (
     <Container ref={ref}>
       <Title ref={title}>Greetings</Title>
       <Text>
-        <span ref={ref1}>
+        <span>
           謹啓 発送月の季語の候 皆様におかれましては
           <br />
           益々ご清祥のこととお慶び申し上げます
         </span>
         <br />
         <br />
-        <span ref={ref2}>
+        <span>
           このたび 私たちは結婚式を
           <br />
           挙げることとなりました
@@ -52,9 +45,7 @@ export const Greetings = forwardRef<HTMLDivElement, Props>((props, ref) => {
         </span>
         <br />
         <br />
-        <span ref={ref3}>
-          <Right>謹白</Right>
-          <br />
+        <span>
           2024年12月吉日
           <br />
           <br />
@@ -85,8 +76,4 @@ const Container = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
-
-const Right = styled.span`
-  float: right;
 `

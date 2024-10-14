@@ -1,7 +1,6 @@
 import { useRef, useLayoutEffect, useState } from 'react'
 
 import { keyframes } from '@emotion/react'
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { Greetings } from './Greetings'
@@ -19,7 +18,7 @@ export const Hero = () => {
   useLayoutEffect(() => {
     const timer = setTimeout(() => {
       setIsAnimating(false)
-    }, 1000)
+    }, 7000)
 
     return () => clearTimeout(timer)
   })
@@ -44,18 +43,6 @@ export const Hero = () => {
   )
 }
 
-const svgAnimation = keyframes`
-  0% {
-    clip-path: inset(0 0 100% 0);
-    opacity: 0;
-
-  }
-  100% {
-    clip-path: inset(0);
-    opacity: 1;
-
-  }
-`
 const fadeInAnimation = keyframes`
   0% {
     opacity: 0;

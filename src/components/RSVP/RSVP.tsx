@@ -33,13 +33,13 @@ export const RSVP = () => {
 
   return (
     <Container ref={ref}>
-      <Title>Response</Title>
+      <Title as="h2">Response</Title>
       <Text>
         お手数ですが 下記お日にち迄に
         <br />
         出欠情報のご連絡をお願い申し上げます
         <br />
-        <Date>2024.12.13 FRI</Date>
+        <Date>2024.12.13（金）</Date>
         <br />
         期日までのご連絡が難しい場合には
         <br />
@@ -70,16 +70,14 @@ const Button = styled.a`
   width: 275px;
   margin: 20px auto 0;
   padding: 10px 0;
-  background: var(--accent-light-pink);
-  color: #000;
+  background-color: var(--accent-light-pink);
+  color: #fff;
   font-family: 'Lato', 'Zen Old Mincho', sans-serif;
   text-decoration: none;
   font-size: clamp(10px, 3.5vw, 3.5 * 390px / 100);
-  transition: background 0.3s;
+  transition: background-color 0.3s;
 
   &:hover {
-    background: var(--accent-light-pink);
-    color: #fff;
-    border: 3px solid var(--accent-green);
+    background-color: var(--accent-green);
   }
 `

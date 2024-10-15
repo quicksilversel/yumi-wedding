@@ -31,7 +31,9 @@ export const Hero = () => {
         <Background ref={backgroundRef} isAnimating={isAnimating} />
         <InnerContainer>
           <ContentsArea ref={contentsAreaRef}>
-            <StyledLogo isAnimating={isAnimating} />
+            <h1>
+              <StyledLogo isAnimating={isAnimating} />
+            </h1>
             <Scroll>
               <span>Scroll</span>
             </Scroll>

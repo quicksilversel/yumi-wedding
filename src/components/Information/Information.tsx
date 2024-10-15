@@ -19,7 +19,7 @@ export const Information = () => {
   return (
     <Container>
       <TitleContainer ref={ref}>
-        {Array.from({ length: 10 }).map((_, index) => (
+        {Array.from({ length: 9 }).map((_, index) => (
           <Title key={`${index}-index-anchor-title`}>Information</Title>
         ))}
       </TitleContainer>

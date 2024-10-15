@@ -33,7 +33,7 @@ export const Message = () => {
 
   return (
     <Container ref={ref}>
-      <Title>Message</Title>
+      <Title as="h2">Message</Title>
       <Text>
         当日挙式からご列席いただきたいと存じますので
         <br />

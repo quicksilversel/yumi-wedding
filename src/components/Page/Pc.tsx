@@ -15,20 +15,11 @@ export const Pc = () => {
   const hasBorder = boundingClientRect && boundingClientRect.top < 0
 
   return (
-    <>
-      <Wrapper>
-        <Container ref={ref} hasBorder={!!hasBorder}>
-          <Sp />
-        </Container>
-      </Wrapper>
-    </>
+    <Container ref={ref} hasBorder={!!hasBorder}>
+      <Sp />
+    </Container>
   )
 }
-
-const Wrapper = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-`
 
 const Container = styled.div<{ hasBorder: boolean }>`
   width: 400px;

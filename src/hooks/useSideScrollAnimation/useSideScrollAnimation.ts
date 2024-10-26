@@ -19,7 +19,7 @@ export const useSideScrollAnimation = (
       })
 
       gsap.to(target.current, {
-        x: movement,
+        y: movement,
         ease: 'none',
         scrollTrigger: {
           trigger: target.current,

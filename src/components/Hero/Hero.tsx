@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState } from 'react'
+import { useRef } from 'react'
 
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
@@ -13,26 +13,16 @@ export const Hero = () => {
   const contentsAreaRef = useRef<HTMLDivElement>(null)
   const leadRef = useRef<HTMLDivElement>(null)
 
-  const [isAnimating, setIsAnimating] = useState(true)
-
-  useLayoutEffect(() => {
-    const timer = setTimeout(() => {
-      setIsAnimating(false)
-    }, 6500)
-
-    return () => clearTimeout(timer)
-  })
-
   useKvAnimation(scrollAreaRef, backgroundRef, contentsAreaRef, leadRef)
 
   return (
     <Container>
       <ScrollArea ref={scrollAreaRef}>
-        <Background ref={backgroundRef} isAnimating={isAnimating} />
+        <Background ref={backgroundRef} />
         <InnerContainer>
           <ContentsArea ref={contentsAreaRef}>
             <h1>
-              <StyledLogo isAnimating={isAnimating} />
+              <StyledLogo />
             </h1>
             <Scroll>
               <span>Scroll</span>
@@ -89,14 +79,13 @@ const ContentsArea = styled.div`
   align-items: center;
 `
 
-const Background = styled.div<{ isAnimating: boolean }>`
+const Background = styled.div`
   position: absolute;
   top: 0;
   width: 100vw;
   height: 100dvh;
   transition: background-color 0.7s ease-in;
-  background-color: ${({ isAnimating }) =>
-    !isAnimating ? 'var(--accent-light-pink)' : '#fff'};
+  background-color: var(--accent-light-pink);
 `
 
 const InnerContainer = styled.div`
@@ -115,11 +104,9 @@ const ScrollArea = styled.div`
   height: max(calc(100dvh - 50px), 587px);
 `
 
-const StyledLogo = styled(Logo)<{ isAnimating: boolean }>`
+const StyledLogo = styled(Logo)`
   width: 300px;
-  fill: ${({ isAnimating }) =>
-    isAnimating ? 'var(--accent-light-pink)' : '#fff'};
-  transition: fill 0.7s ease-in;
+  fill: #fff;
   z-index: 10;
 `
 
@@ -133,7 +120,7 @@ const Scroll = styled.div`
   text-transform: uppercase;
   transform: translateX(-50%);
   transition: 0.6s opacity ease-out;
-  animation: ${fadeInAnimation} 0.6s 1.5s ease-out both;
+  animation: ${fadeInAnimation} 0.6s 6s ease-out both;
 
   span {
     position: absolute;

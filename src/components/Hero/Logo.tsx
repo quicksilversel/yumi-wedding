@@ -289,10 +289,12 @@ Logo.displayName = 'Logo'
 
 const dateAnimation = keyframes`
   0% {
+    -webkit-clip-path: inset(0 100% 0 0);
     clip-path: inset(0 100% 0 0);
 
   }
   100% {
+    -webkit-clip-path: inset(0);
     clip-path: inset(0);
 
   }
@@ -309,23 +311,24 @@ const fadeInAnimation = keyframes`
 
 const leftToRightAnimation = keyframes`
   0% {
+    -webkit-clip-path: inset(0 100% 0 0);
     clip-path: inset(0 100% 0 0);
 
   }
   100% {
+    -webkit-clip-path: inset(0);
     clip-path: inset(0);
-
   }
 `
 
 const rightToLeftAnimation = keyframes`
   0% {
+    -webkit-clip-path: inset(0 0 0 100%);
     clip-path: inset(0 0 0 100%);
-
   }
   100% {
+    -webkit-clip-path: inset(0);
     clip-path: inset(0);
-
   }
 `
 

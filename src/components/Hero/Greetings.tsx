@@ -16,7 +16,7 @@ export const Greetings = forwardRef<HTMLDivElement, Props>((props, ref) => {
         Greetings
       </Title>
       <Text>
-        謹啓 秋冬の候 皆様におかれましては
+        謹啓 初冬の候 皆様におかれましては
         <br />
         益々ご清祥のこととお慶び申し上げます
         <br />

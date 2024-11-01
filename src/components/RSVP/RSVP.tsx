@@ -26,7 +26,10 @@ export const RSVP = () => {
         <br />
         ご一報いただけますと幸いです
       </Text>
-      <Button href="" target="_blank">
+      <Button
+        href="https://docs.google.com/forms/d/e/1FAIpQLScZbc5HxNJZ_FhPF8ZFrdwVYGVoq-hcfMgA3BhZhuWZ2ruz0w/viewform"
+        target="_blank"
+      >
         招待状に回答する
       </Button>
     </Container>

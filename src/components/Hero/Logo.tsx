@@ -334,24 +334,30 @@ const rightToLeftAnimation = keyframes`
 
 const Date = styled.g`
   animation: ${dateAnimation} 1.5s ease-out both;
+  transform: translateZ(0);
 `
 
 const Kota = styled.g`
   animation: ${leftToRightAnimation} 1.25s 2s ease-out both;
+  transform: translateZ(0);
 `
 
 const Yumi = styled.g`
   animation: ${rightToLeftAnimation} 1.25s 3.25s ease-out both;
+  transform: translateZ(0);
 `
 
 const Crown = styled.g`
   animation: ${fadeInAnimation} 1.25s 4.5s ease-out both;
+  transform: translateZ(0);
 `
 
 const Wedding = styled.g`
   animation: ${fadeInAnimation} 1.25s 5.5s ease-out both;
+  transform: translateZ(0);
 `
 
 const Celebration = styled.g`
   animation: ${fadeInAnimation} 1.25s 5.5s ease-out both;
+  transform: translateZ(0);
 `

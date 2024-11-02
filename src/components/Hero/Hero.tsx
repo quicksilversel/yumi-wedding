@@ -120,7 +120,7 @@ const Scroll = styled.div`
   text-transform: uppercase;
   transform: translateX(-50%);
   transition: 0.6s opacity ease-out;
-  animation: ${fadeInAnimation} 0.6s 6s ease-out both;
+  animation: ${fadeInAnimation} 0.6s 1s ease-out both;
 
   span {
     position: absolute;

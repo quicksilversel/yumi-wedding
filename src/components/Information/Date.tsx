@@ -19,6 +19,22 @@ export const Date = () => {
       <Flower src="/flower.png" alt="flower" />
       <Star src="/star.png" alt="star" />
       <Title>DATE</Title>
+      <Calendar>
+        <Month>January</Month>
+        <Grid>
+          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+            <em key={day}>{day}</em>
+          ))}
+          {[...Array(3)].map((_, i) => (
+            <span key={i}>{''}</span>
+          ))}
+          {[...Array(31)].map((_, i) => (
+            <Day key={i} isTargetDate={i + 1 === 13}>
+              {i + 1}
+            </Day>
+          ))}
+        </Grid>
+      </Calendar>
       <Text>
         2025年1月13日（月）
         <br />
@@ -67,4 +83,37 @@ const Star = styled.img`
   left: calc(50% - 140px);
   transform: rotate(100deg);
   animation: ${floatAnimation} 2s linear infinite;
+`
+
+const Calendar = styled.div`
+  width: 300px;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 15px auto 0;
+  font-size: 14px;
+`
+
+const Grid = styled.div`
+  margin-top: 25px;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+`
+
+const Month = styled.h3`
+  text-transform: uppercase;
+  font-family: 'Lato', 'Zen Old Mincho', sans-serif;
+  letter-spacing: 0.2em;
+`
+
+const Day = styled.span<{ isTargetDate: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  background-color: ${({ isTargetDate }) =>
+    isTargetDate ? 'var(--accent-light-pink)' : 'transparent'};
+  color: ${({ isTargetDate }) => (isTargetDate ? '#fff' : '#333')};
 `

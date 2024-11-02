@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useLayoutEffect, useState } from 'react'
 
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
@@ -13,6 +13,12 @@ export const Hero = () => {
   const contentsAreaRef = useRef<HTMLDivElement>(null)
   const leadRef = useRef<HTMLDivElement>(null)
 
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useLayoutEffect(() => {
+    setIsLoaded(true)
+  }, [])
+
   useKvAnimation(scrollAreaRef, backgroundRef, contentsAreaRef, leadRef)
 
   return (
@@ -21,9 +27,11 @@ export const Hero = () => {
         <Background ref={backgroundRef} />
         <InnerContainer>
           <ContentsArea ref={contentsAreaRef}>
-            <h1>
-              <StyledLogo />
-            </h1>
+            {isLoaded && (
+              <h1>
+                <StyledLogo />
+              </h1>
+            )}
             <Scroll>
               <span>Scroll</span>
             </Scroll>
@@ -119,7 +127,7 @@ const Scroll = styled.div`
   text-transform: uppercase;
   transform: translateX(-50%);
   transition: 0.6s opacity ease-out;
-  animation: ${fadeInAnimation} 0.6s 1s ease-out both;
+  animation: ${fadeInAnimation} 0.6s 6s ease-out both;
 
   span {
     position: absolute;

@@ -107,7 +107,6 @@ const ScrollArea = styled.div`
 const StyledLogo = styled(Logo)`
   width: 300px;
   fill: #fff;
-  z-index: 10;
 `
 
 const Scroll = styled.div`

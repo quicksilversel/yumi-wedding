@@ -15,10 +15,12 @@ export const Greetings = forwardRef<HTMLDivElement, Props>((props, ref) => {
       <Title as="h2" ref={title}>
         Greetings
       </Title>
-      <Text>
-        謹啓 初冬の候 皆様におかれましては
+      <StyledText>
+        謹啓　立冬の候
         <br />
-        益々ご清祥のこととお慶び申し上げます
+        金木犀の香りが感じられるようになりました
+        <br />
+        お健やかにお過ごしでしょうか
         <br />
         <br />
         このたび 私たちは結婚式を
@@ -46,13 +48,13 @@ export const Greetings = forwardRef<HTMLDivElement, Props>((props, ref) => {
         <Right>謹白</Right>
         <br />
         <br />
-        2024年12月吉日
+        2024年11月吉日
         <br />
         <br />
         福本　晃汰
         <br />
         宮里　優美
-      </Text>
+      </StyledText>
     </Container>
   )
 })
@@ -79,4 +81,8 @@ const Container = styled.section`
 
 const Right = styled.span`
   float: right;
+`
+
+const StyledText = styled(Text)`
+  line-height: 1.8;
 `

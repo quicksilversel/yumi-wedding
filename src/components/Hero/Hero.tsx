@@ -47,7 +47,7 @@ export const Hero = ({ isSp }: Props) => {
                 </h1>
               )
             )}
-            <Scroll>
+            <Scroll isSp={isSp}>
               <span>Scroll</span>
             </Scroll>
           </ContentsArea>
@@ -171,7 +171,7 @@ const BottomStar = styled(Star)`
   right: calc(45 / 375 * 100vw);
 `
 
-const Scroll = styled.div`
+const Scroll = styled.div<{ isSp: boolean }>`
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -182,6 +182,12 @@ const Scroll = styled.div`
   transform: translateX(-50%);
   transition: 0.6s opacity ease-out;
   animation: ${fadeInAnimation} 0.6s 6s ease-out both;
+
+  ${({ isSp }) =>
+    isSp &&
+    css`
+      animation-delay: 0s;
+    `}
 
   span {
     position: absolute;

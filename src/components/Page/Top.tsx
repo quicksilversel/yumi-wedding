@@ -12,7 +12,7 @@ type Props = {
 export const Top = ({ isSp }: Props) => {
   return (
     <Container>
-      <Hero />
+      <Hero isSp={isSp} />
       {isSp ? <Sp /> : <Pc />}
     </Container>
   )

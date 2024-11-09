@@ -33,20 +33,20 @@ export const Hero = ({ isSp }: Props) => {
         <Background ref={backgroundRef} isSp={isSp} />
         <InnerContainer>
           <ContentsArea ref={contentsAreaRef} isSp={isSp}>
-            {isSp ? (
-              <>
-                <Flower src="/flower-icon.png" alt="flower" />
-                <LogoSp src="/logo.png" />
-                <Star src="/star-icon.png" alt="star" />
-                <BottomStar src="/star-icon.png" alt="star" />
-              </>
-            ) : (
-              isLoaded && (
-                <h1>
-                  <StyledLogo />
-                </h1>
-              )
-            )}
+            {isSp
+              ? isLoaded && (
+                  <>
+                    <Flower src="/flower-icon.png" alt="flower" />
+                    <LogoSp src="/logo.png" />
+                    <Star src="/star-icon.png" alt="star" />
+                    <BottomStar src="/star-icon.png" alt="star" />
+                  </>
+                )
+              : isLoaded && (
+                  <h1>
+                    <StyledLogo />
+                  </h1>
+                )}
             <Scroll isSp={isSp}>
               <span>Scroll</span>
             </Scroll>
@@ -146,6 +146,7 @@ const StyledLogo = styled(Logo)`
 const LogoSp = styled.img`
   width: calc(250 / 375 * 100vw);
   margin-top: calc(100 / 375 * 100vw);
+  animation: ${fadeInAnimation} 1.5s ease-out both;
 `
 
 const Flower = styled.img`
@@ -153,7 +154,7 @@ const Flower = styled.img`
   width: 30px;
   top: calc(120 / 375 * 100vw);
   left: calc(50 / 375 * 100vw);
-  animation: ${floatAnimation} 7s 0.5s linear infinite;
+  animation: ${floatAnimation} 7s 0.5s linear infinite both;
 `
 
 const Star = styled.img`
@@ -162,7 +163,7 @@ const Star = styled.img`
   top: calc(100 / 375 * 100vw);
   left: calc(80 / 375 * 100vw);
   transform: rotate(100deg);
-  animation: ${floatAnimation} 2s linear infinite;
+  animation: ${floatAnimation} 2s linear infinite both;
 `
 
 const BottomStar = styled(Star)`
@@ -186,7 +187,7 @@ const Scroll = styled.div<{ isSp: boolean }>`
   ${({ isSp }) =>
     isSp &&
     css`
-      animation-delay: 0s;
+      animation-delay: 1s;
     `}
 
   span {
@@ -207,6 +208,6 @@ const Scroll = styled.div<{ isSp: boolean }>`
     content: '';
     background: #fff;
     transform: translateX(-50%);
-    animation: ${scrollLineAnimation} 2s ease-in-out infinite;
+    animation: ${scrollLineAnimation} 2s ease-in-out infinite both;
   }
 `

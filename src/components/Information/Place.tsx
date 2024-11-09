@@ -19,9 +19,9 @@ export const Place = () => {
 
   return (
     <Container ref={ref}>
-      <Flower src="/flower.png" alt="flower" />
-      <Heart src="/heart.png" alt="heart" />
-      <Star src="/star.png" alt="star" />
+      <Flower src="/flower-icon.png" alt="flower" />
+      <Heart src="/heart-icon.png" alt="heart" />
+      <Star src="/star-icon.png" alt="star" />
       <Title>PLACE</Title>
       <Text>
         鶴見ノ森迎賓館

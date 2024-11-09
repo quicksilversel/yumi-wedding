@@ -35,10 +35,10 @@ export const Hero = ({ isSp }: Props) => {
           <ContentsArea ref={contentsAreaRef} isSp={isSp}>
             {isSp ? (
               <>
-                <Flower src="/flower.png" alt="flower" />
+                <Flower src="/flower-icon.png" alt="flower" />
                 <LogoSp src="/logo.png" />
-                <Star src="/star.png" alt="star" />
-                <BottomStar src="/star.png" alt="star" />
+                <Star src="/star-icon.png" alt="star" />
+                <BottomStar src="/star-icon.png" alt="star" />
               </>
             ) : (
               isLoaded && (

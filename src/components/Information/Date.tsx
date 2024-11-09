@@ -16,8 +16,8 @@ export const Date = () => {
 
   return (
     <Container ref={ref}>
-      <Flower src="/flower.png" alt="flower" />
-      <Star src="/star.png" alt="star" />
+      <Flower src="/flower-icon.png" alt="flower" />
+      <Star src="/star-icon.png" alt="star" />
       <Title>DATE</Title>
       <Calendar>
         <Month>January</Month>
